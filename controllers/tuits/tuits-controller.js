@@ -21,19 +21,19 @@ const findTuits  = (req, res) => {
     res.json(tuits);
 }
 const updateTuit = (req, res) => {
-    const tuitdIdToUpdate = req.params.tid;
+    const tuitdIdToUpdate = parseInt(req.params.tid);
     const updates = req.body;
     const tuitIndex = tuits.findIndex(
-        (t) => t._id === tuitdIdToUpdate)
+        (t) => t._id.toString() === tuitdIdToUpdate.toString())
     tuits[tuitIndex] =
         {...tuits[tuitIndex], ...updates};
     res.sendStatus(200);
 }
 
 const deleteTuit = (req, res) => {
-    const tuitdIdToDelete = req.params['tid'];
+    const tuitdIdToDelete = parseInt(req.params['tid']);
     tuits = tuits.filter(t =>
-        t._id !== tuitdIdToDelete);
+        t._id.toString() !== tuitdIdToDelete.toString());
     res.sendStatus(200);
 }
 
