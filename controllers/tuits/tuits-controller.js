@@ -16,6 +16,8 @@ const createTuit = (req, res) => {
     newTuit.handle = "@Dqing"
     newTuit.likes = 0;
     newTuit.liked = false;
+    newTuit.disliked = false;
+    newTuit.dislikes = 0;
     newTuit.image = "mjqc.jpeg"
     newTuit.time = "1s"
     tuits.push(newTuit);
