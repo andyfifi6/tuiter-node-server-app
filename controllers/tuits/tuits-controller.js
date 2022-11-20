@@ -11,9 +11,13 @@ export default (app) => {
 const createTuit = (req, res) => {
     const newTuit = req.body;
     newTuit._id = (new Date()).getTime()+'';
+    newTuit.topic = "Moon Supreme"
+    newTuit.userName = "Dongfang Qingcang "
+    newTuit.handle = "@Dqing"
     newTuit.likes = 0;
     newTuit.liked = false;
-    newTuit.image = "qc.jpeg"
+    newTuit.image = "mjqc.jpeg"
+    newTuit.time = "1s"
     tuits.push(newTuit);
     res.json(newTuit);
 }
