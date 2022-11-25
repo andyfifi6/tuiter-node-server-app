@@ -15,5 +15,7 @@ app.use(express.json());
 TuitsController(app);
 HelloController(app)
 UserController(app)
-mongoose.connect('mongodb://localhost:27017/tuiter');
+mongoose.connect(process.env.DB_CONNECTION_STRING
+    || 'mongodb://localhost:27017/tuiter')
 app.listen(process.env.PORT || 4000)
+
