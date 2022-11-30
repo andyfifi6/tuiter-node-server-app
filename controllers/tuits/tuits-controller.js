@@ -1,12 +1,5 @@
 import * as tuitsDao from './tuits-dao.js'
 
-export default (app) => {
-    app.post('/api/tuits', createTuit);
-    app.get('/api/tuits', findTuits);
-    app.put('/api/tuits/:tid', updateTuit);
-    app.delete('/api/tuits/:tid', deleteTuit);
-}
-
 const createTuit = async (req, res) => {
     const newTuit = req.body;
     newTuit.topic = "Moon Supreme"
@@ -34,14 +27,20 @@ const updateTuit = async (req, res) => {
     const status = await tuitsDao
         .updateTuit(tuitdIdToUpdate,
             updates);
-    res.sendStatus(status);
+    res.json(status);
 }
 
 const deleteTuit = async (req, res) => {
     const tuitdIdToDelete = parseInt(req.params['tid']);
     const status = await tuitsDao
         .deleteTuit(tuitdIdToDelete);
-    res.sendStatus(status);
+    res.json(status);
 }
 
+export default (app) => {
+    app.post('/api/tuits', createTuit);
+    app.get('/api/tuits', findTuits);
+    app.put('/api/tuits/:tid', updateTuit);
+    app.delete('/api/tuits/:tid', deleteTuit);
+}
 
